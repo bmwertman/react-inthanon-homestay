@@ -1,9 +1,14 @@
 import React from 'react';
+import Cal from './components/Calendar.js';
+import './Reservations.scss';
+
 const Reservations = () => {
+  
     return (
-        <div className="jumbotron">
-            <h1 className="display-3">Make a Reservation!</h1>
-        </div>
+      <div>
+        <Cal/>
+      </div>
     );
 }
+
 export default Reservations;
