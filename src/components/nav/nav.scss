@@ -12,8 +12,8 @@ $white: #FFFFFF;
 .nav-bar{
   position: absolute;
   right: 0;
-  top: 166px;
-  width: calc(100% - 300px);
+  top: 82px;
+  width: calc(100% - 173px);
   .btn-wrapper {
     display: flex;
     justify-content:space-around;
@@ -23,11 +23,11 @@ $white: #FFFFFF;
     padding: 0;
     background-color: $inthanonGreen;
     li {
-      margin: 22px 0 48px 0;
+      margin: 4px 0 24px 0;
       .nav-btn {
         color: white;
         font-weight: bold;
-        font-size: 55px;
+        font-size: 35px;
         text-decoration: none;
       }  
     } 

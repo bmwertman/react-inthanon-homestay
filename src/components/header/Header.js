@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './img/logo2.png';
+import logo from './img/logo3.png';
 import Nav from '../nav/Nav'
 import './header.scss';
 
