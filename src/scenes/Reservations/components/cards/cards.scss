@@ -1,0 +1,87 @@
+$inthanonGreen : #116A3E;
+$dkGreen : #003218;
+$medDkGreen: #014F27;
+$ltGreen: #439A6E;
+$medLtGreen: #258353;
+$blue: #144460;
+$dkBlue : #021D2D;
+$medDkBlue: #052F48;
+$ltBlue: #41708C;
+$medLtBlue: #265977;
+$white: #FFFFFF;
+
+
+.rccs{
+  float: right;
+  margin: 15px 25px 15px 0 ;
+  width: 162px;
+  &__card{
+    height: 94px;
+    width: 156px;
+  }
+  &__number{ font-size: 9px }
+  &__name{ font-size: 9px }
+  &__expiry{
+    &__valid{ font-size: 2px }
+    &__value{ font-size: 8px }
+  }
+  &__chip{
+  top:25%;
+  height: 18px;
+  width: 23px;
+  }
+  &__cvc{
+    content:url('./img/cvc.png');
+    width: 45px;
+    position: absolute;
+    top: 34px;
+    left: 77px;
+  }
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 25px 0 25px;
+  div {
+    + div {
+      margin-top: 15px;
+    }
+
+    > div {
+      color: #999;
+      margin-top: 5px;
+    }
+
+    &:nth-of-type(3) {
+      display: flex;
+
+      input {
+        width: 100%;
+        &:last-child {
+          // flex: 1;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  input {
+    border: 1px solid $ltGreen;
+    border-radius: 6px;
+    box-shadow: none;
+    display: block;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    outline: none;
+    padding: 10px 8px;
+    transition: all 0.4s;
+    width: 333px;
+
+    &:active,
+    &:focus {
+      border-color: #666;
+    }
+  }
+}

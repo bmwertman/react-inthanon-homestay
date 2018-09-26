@@ -1,13 +1,15 @@
 import React from 'react';
-import Cal from './components/Calendar.js';
+import Cal from './components/calendar/Calendar.js';
+import Cards from './components/cards/Cards.js';
 import './Reservations.scss';
 
 const Reservations = () => {
   
     return (
-      <div>
+      <aside className="reservation">
         <Cal/>
-      </div>
+        <Cards/>
+      </aside>
     );
 }
 

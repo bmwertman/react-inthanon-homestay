@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+import './calendar.scss';
 import { formatDate, parseDate } from 'react-day-picker/moment';
 export default class Cal extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class Cal extends React.Component {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
-      <aside className="InputFromTo">
+      <div className="InputFromTo">
         <label htmlFor="dates-wrapper">Dates</label>
         <div className="dates-wrapper">
           <DayPickerInput
@@ -64,7 +65,7 @@ export default class Cal extends React.Component {
               parseDate={parseDate}
               dayPickerProps={{
                 selectedDays: [from, { from, to }],
-                disabledDays: { before: from },
+                disabledDays: [{before: new Date() },{ before: from }],
                 modifiers,
                 month: from,
                 fromMonth: from,
@@ -74,7 +75,7 @@ export default class Cal extends React.Component {
             />
           </span>
         </div>
-      </aside>
+      </div>
     );
   }
 }

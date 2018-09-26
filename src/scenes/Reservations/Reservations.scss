@@ -10,67 +10,10 @@ $ltBlue: #41708C;
 $medLtBlue: #265977;
 $white: #FFFFFF;
 
-.InputFromTo{
-  width: 350px;
+.reservation {
+  width: 402px;
   float: right;
   margin: 48px;
   border: 1px solid $ltGreen;
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 17px;
-  padding: 25px;
-  .dates-wrapper{
-    border: 1px solid $ltGreen;
-    padding: 10px;
-    input{
-      border: none;
-      padding: none;
-      max-width: 160px;
-    }
-    div.DayPickerInput-Overlay{
-      margin-top: 30px;
-    }
-    .DayPickerInput , .InputFromTo-to {
-      max-width: 150px;
-    }
-    .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-      background-color: #f0f8ff !important;
-      color: #4a90e2;
-    }
-    .DayPicker-Day {
-      &.DayPicker-Day--outside{
-        border: none;
-      }
-      border-radius: 0 !important;
-      font-size: 0.7em;
-      border: 1px solid lightgrey;
-    }
-    .DayPicker-Day--start {
-      border-top-left-radius: 50% !important;
-      border-bottom-left-radius: 50% !important;
-    }
-    .DayPicker-Day--end {
-      border-top-right-radius: 50% !important;
-      border-bottom-right-radius: 50% !important;
-    }
-    .DayPicker-Weekday abbr[title]{
-      font-size: 0.7em;
-    }
-    .DayPicker-Caption > div {
-      font-size: 18px !important;
-      text-align: center;
-      width: 100%;
-    }
-    span.DayPicker-NavButton{
-      &.DayPicker-NavButton--prev{
-        position: absolute;
-        left: 20px;
-      }
-      &.DayPicker-NavButton--next{
-        position: absolute;
-        right: 20px;
-      }
-    }
-    
-    
-  }
-} 
+  box-sizing: border-box;
+}
