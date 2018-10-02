@@ -14,7 +14,7 @@ $white: #FFFFFF;
 .rccs{
   float: right;
   margin: 15px 25px 15px 0 ;
-  width: 162px;
+  width: 157px;
   &__card{
     height: 94px;
     width: 156px;
@@ -72,12 +72,10 @@ form {
     border-radius: 6px;
     box-shadow: none;
     display: block;
-    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 17px;
     outline: none;
     padding: 10px 8px;
     transition: all 0.4s;
-    width: 333px;
+    width: 350px;
 
     &:active,
     &:focus {

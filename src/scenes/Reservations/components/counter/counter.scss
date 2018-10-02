@@ -1,0 +1,17 @@
+.counter{
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  .decrement{
+
+  }
+  .count {
+    width: 27px;
+    border: none;
+    margin: 20px;
+    text-align: center;
+  }
+  .increment{
+
+  }
+}

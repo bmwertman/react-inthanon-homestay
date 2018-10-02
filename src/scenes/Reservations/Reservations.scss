@@ -15,5 +15,14 @@ $white: #FFFFFF;
   float: right;
   margin: 48px;
   border: 1px solid $ltGreen;
+  border-radius: 4px;
   box-sizing: border-box;
+  font-size: 14px;
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  .wrapper {
+    border: 1px solid $ltGreen;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: none;
+  }
 }

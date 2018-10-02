@@ -36,8 +36,8 @@ export default class Cal extends React.Component {
     const modifiers = { start: from, end: to };
     return (
       <div className="InputFromTo">
-        <label htmlFor="dates-wrapper">Dates</label>
-        <div className="dates-wrapper">
+        <label htmlFor="wrapper">Dates</label>
+        <div className="wrapper">
           <DayPickerInput
             value={from}
             placeholder="Check in"

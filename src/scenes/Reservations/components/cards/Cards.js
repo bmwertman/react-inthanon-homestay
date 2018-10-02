@@ -15,47 +15,48 @@ export default class ReactCreditCard extends React.Component {
         cvc: '',
         focused: '',
       };
-    }
+  };
 
-    componentDidMount() {
-      Payment.formatCardNumber(document.querySelector('[name="number"]'));
-      Payment.formatCardExpiry(document.querySelector('[name="expiry"]'));
-      Payment.formatCardCVC(document.querySelector('[name="cvc"]'));
-    }
+  componentDidMount() {
+    Payment.formatCardNumber(document.querySelector('[name="number"]'));
+    Payment.formatCardExpiry(document.querySelector('[name="expiry"]'));
+    Payment.formatCardCVC(document.querySelector('[name="cvc"]'));
+  };
 
-    handleInputFocus = ({ target }) => {
+  handleInputFocus = ({ target }) => {
+    this.setState({
+      focused: target.name,
+    });
+  };
+
+  handleInputChange = ({ target }) => {
+    if (target.name === 'number') {
       this.setState({
-        focused: target.name,
+        [target.name]: target.value.replace(/ /g, ''),
       });
-    };
-
-    handleInputChange = ({ target }) => {
-      if (target.name === 'number') {
-        this.setState({
-          [target.name]: target.value.replace(/ /g, ''),
-        });
-      }
-      else if (target.name === 'expiry') {
-        this.setState({
-          [target.name]: target.value.replace(/ |\//g, ''),
-        });
-      }
-      else {
-        this.setState({
-          [target.name]: target.value,
-        });
-      }
-    };
-
-    handleCallback(type, isValid) {
-      console.log(type, isValid); //eslint-disable-line no-console
     }
+    else if (target.name === 'expiry') {
+      this.setState({
+        [target.name]: target.value.replace(/ |\//g, ''),
+      });
+    }
+    else {
+      this.setState({
+        [target.name]: target.value,
+      });
+    }
+  };
 
-    render() {
-      const { name, number, expiry, cvc, focused } = this.state;
-      return (
-        <div>
-          <form>
+  handleCallback(type, isValid) {
+    console.log(type, isValid); //eslint-disable-line no-console
+  };
+
+  render() {
+    const { name, number, expiry, cvc, focused } = this.state;
+    return (
+      <div>
+        <form>
+          <section className="cc">
             <div>
               <input
                 type="tel"
@@ -90,16 +91,17 @@ export default class ReactCreditCard extends React.Component {
                 onFocus={this.handleInputFocus}
               />
             </div>
-          </form>
-          <Cards
-            number={number}
-            name={name}
-            expiry={expiry}
-            cvc={cvc}
-            focused={focused}
-            callback={this.handleCallback}
-          />
-        </div>
-      );
-    }
+          </section>
+        </form>
+        <Cards
+          number={number}
+          name={name}
+          expiry={expiry}
+          cvc={cvc}
+          focused={focused}
+          callback={this.handleCallback}
+        />
+      </div>
+    );
   }
+}

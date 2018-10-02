@@ -13,14 +13,9 @@ $white: #FFFFFF;
 .InputFromTo{
   display: flex;
   flex-direction: column;
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 17px;
   margin: 25px 25px 0 25px;
-  .dates-wrapper{
-    border: 1px solid $ltGreen;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: none;
+  .wrapper{
+    
     input{
       border: none;
       padding: none;
