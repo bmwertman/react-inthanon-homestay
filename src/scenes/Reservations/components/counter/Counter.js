@@ -13,11 +13,15 @@ class Counter extends React.Component {
     this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
   }
 
+  myOnChangeFcn () {
+    return this.props[this.props.id].count
+  }
+
   render () {
     return (
       <div className="counter">
         <Button name="decrement" shape="circle" icon="minus" className="btn" onClick={this.decrement} />
-        <input className="count" value={this.props[this.props.id].count} onChange={this.props[this.props.id].count} />
+        <input className="count" value={this.props[this.props.id].count} onChange={this.myOnChangeFcn()} />
         <Button name="increment" shape="circle" icon="plus" className="btn" onClick={this.increment} />
       </div>
     ); 
