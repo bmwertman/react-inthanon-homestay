@@ -47,10 +47,6 @@ export default class ReactCreditCard extends React.Component {
     }
   };
 
-  handleCallback(type, isValid) {
-    console.log(type, isValid); //eslint-disable-line no-console
-  };
-
   render() {
     const { name, number, expiry, cvc, focused } = this.state;
     return (

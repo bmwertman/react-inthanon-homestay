@@ -1,42 +1,35 @@
 import React from 'react';
+import { connect } from "react-redux";
 import { Button } from 'antd';
 import './counter.scss'
-export default class Counter extends React.Component{
-  constructor(props) {
-      super(props);
-      this.state = {
-        count: this.props.defaultValue
-      }
-    this.incrementCount = this.incrementCount.bind(this)
-    this.decrementCount = this.decrementCount.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-  handleChange (event) {
-    if(event.currentTarget.name === "decrement" && this.state.count > this.props.defaultValue){
-      this.setState({count: this.state.count - 1})
-    } else if(event.currentTarget.name === "increment") {
-      this.setState({count: this.state.count + 1})
-    }
 
-    if(this.state.count === 2){
-      debugger;
-    }
+class Counter extends React.Component {
+
+  increment = () => {
+    this.props.dispatch({ type: 'INCREMENT', payload: this.props.id });
   }
 
-  incrementCount (e) {
-    this.handleChange(e)
+  decrement = () => {
+    this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
   }
-  decrementCount (e) {
-    this.handleChange(e)
-  }
+
   render () {
     return (
       <div className="counter">
-        <Button name="decrement" shape="circle" icon="minus" className="btn" onClick={this.decrementCount} />
-        <input className="count" value={this.state.count} onChange={this.handleChange} />
-        <Button name="increment" shape="circle" icon="plus" className="btn" onClick={this.incrementCount} />
+        <Button name="decrement" shape="circle" icon="minus" className="btn" onClick={this.decrement} />
+        <input className="count" value={this.props[this.props.id].count} onChange={this.props[this.props.id].count} />
+        <Button name="increment" shape="circle" icon="plus" className="btn" onClick={this.increment} />
       </div>
-    );
-  }  
+    ); 
+  }
 }
 
+function mapStateToProps(state) {
+  return {
+    adult: { count: state.adult.count },
+    child: { count: state.child.count },
+    infant: { count: state.infant.count }
+  };
+} 
+
+export default connect(mapStateToProps)(Counter);
