@@ -4,13 +4,18 @@ import { Button } from 'antd';
 import './counter.scss'
 
 class Counter extends React.Component {
-
+  constructor () {
+    super();
+    this.decrement = this.decrement.bind(this)
+  }
   increment = () => {
     this.props.dispatch({ type: 'INCREMENT', payload: this.props.id });
   }
 
   decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
+    if(this.props.id === 'adult' && this.props.adult.count > 1 || this.props.id !== 'adult'){
+      this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
+    }
   }
 
   myOnChangeFcn () {
