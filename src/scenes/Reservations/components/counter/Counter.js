@@ -10,17 +10,21 @@ class Counter extends React.Component {
   }
   increment = () => {
     this.props.dispatch({ type: 'INCREMENT', payload: this.props.id });
+    if(this.props.id === 'room'){
+      this.props.dispatch({ type: 'TOTAL', payload: this.props.room.count + 1});
+    }
   }
 
   decrement = () => {
     if((this.props.id === 'adult' && this.props.adult.count > 1) || (this.props.id === 'room' && this.props.room.count > 1)){
       this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
+      if(this.props.id === 'room'){
+        this.props.dispatch({ type: 'TOTAL', payload: this.props.room.count - 1});
+      }
     } else if ((this.props.id === 'child' && this.props.child.count > 0) || (this.props.id === 'infant' && this.props.infant.count > 0 )) {
       this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
     }
   }
-
-
 
   render () {
     return (

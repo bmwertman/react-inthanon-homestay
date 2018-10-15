@@ -6,27 +6,32 @@ import './calendar.scss';
 import moment from 'moment';
 import {formatDate, parseDate} from 'react-day-picker/moment';
 class Cal extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
     this.state = {
-      from: undefined,
-      to: undefined,
-      nights: moment(this.to).diff(this.from, 'days') ? moment(this.to).diff(this.from, 'days') : 0
+      from: null,
+      to: null
     };
   }
   handleFromChange(from) {
     // Change the from date and focus the "to" input field
     this.setState({ from });
     if(this.state.to && moment(this.state.from).isBefore(from)){
-      this.props.dispatch({ type: 'TOTAL', nights: moment(this.state.to).diff(from, 'days') });
+      this.props.dispatch({
+        type: 'TOTAL',
+        nights: moment(this.state.to).diff(from, 'days')
+      });
     }
   }
   handleToChange(to) {
     this.setState({ to });
     if(this.state.from && moment(this.state.from).isBefore(to)){
-      this.props.dispatch({ type: 'TOTAL', nights: moment(to).diff(this.state.from, 'days') });
+      this.props.dispatch({
+        type: 'TOTAL',
+        nights: moment(to).diff(this.state.from, 'days')
+      });
     }
   }
 

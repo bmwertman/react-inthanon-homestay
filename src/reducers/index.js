@@ -4,7 +4,8 @@ const initialState = {
     infant: { count: 0 },
     room: { count: 1 },
     total: 0,
-    nightlyRate: 30.99
+    nightlyRate: 30.99,
+    nights: 0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,7 +15,19 @@ const rootReducer = (state = initialState, action) => {
     case 'DECREMENT':
       return {...state, [action.payload]: { count: state[action.payload].count - 1 }};
     case 'TOTAL':
-      return {...state, total: [action.nights] * state.nightlyRate};
+      if(action.nights) {
+        return {...state,
+          nights: action.nights,
+          total: action.nights * state.nightlyRate * state.room.count
+        };
+      } else {
+        return {...state,
+          rooms: {
+            count: action.rooms
+          },
+          total: state.nights * state.nightlyRate * action.payload
+        };
+      }
     default:
       return state;
   }

@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import './total.scss';
 
 class Total extends React.Component {
-  changeHandler () {
-    console.log(this.props.total);
-  }
-
   render () {
     return (
       <input
@@ -14,7 +10,7 @@ class Total extends React.Component {
         step="any"
         className="total"
         value={`Total - $${this.props.total.toFixed(2)}`}
-        onChange={this.changeHandler}
+        readOnly
         />
     )
   }
