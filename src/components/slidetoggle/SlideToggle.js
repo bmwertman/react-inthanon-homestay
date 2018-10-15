@@ -2,10 +2,11 @@ import React from 'react';
 import { SlideToggle } from 'react-slide-toggle';
 import { Icon } from 'antd';
 import Guests from '../../scenes/Reservations/components/guests/Guests.js';
+import { connect } from "react-redux";
 import './slidetoggle.scss';
 
 
-export default class ReactSlideToggle extends React.Component {
+class ReactSlideToggle extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -17,7 +18,7 @@ export default class ReactSlideToggle extends React.Component {
       let currentState = this.state.open;
       this.setState({ open: !currentState });
   };
-  render () { 
+  render () {
     return (
       <SlideToggle
         duration={800}
@@ -29,6 +30,7 @@ export default class ReactSlideToggle extends React.Component {
           range
         }) => (
           <div className={"slide-toggle slide-toggle--special " + (toggleState || "").toLowerCase()}>
+            <label htmlFor="wrapper">Nightly rate ${ this.props.nightlyRate }</label>
             <div className="wrapper slide-toggle__header">
               <Guests />
               <button className='slide-toggle__toggle' onClick={() => {onToggle(); this.toggleType();}}>
@@ -39,7 +41,7 @@ export default class ReactSlideToggle extends React.Component {
               <div className="slide-toggle__box-inner"
                    style= {{opacity: Math.max(0.5, range)}}
               >
-                {this.props.children}  
+                {this.props.children}
               </div>
             </div>
           </div>
@@ -48,3 +50,10 @@ export default class ReactSlideToggle extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    nightlyRate: state.nightlyRate
+  };
+}
+export default connect(mapStateToProps)(ReactSlideToggle);
