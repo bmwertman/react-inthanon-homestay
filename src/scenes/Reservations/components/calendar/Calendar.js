@@ -1,10 +1,11 @@
 import React from 'react';
-import moment from 'moment';
+import { connect } from "react-redux";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import './calendar.scss';
-import { formatDate, parseDate } from 'react-day-picker/moment';
-export default class Cal extends React.Component {
+import moment from 'moment';
+import {formatDate, parseDate} from 'react-day-picker/moment';
+class Cal extends React.Component {
   constructor(props) {
     super(props);
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -12,23 +13,21 @@ export default class Cal extends React.Component {
     this.state = {
       from: undefined,
       to: undefined,
+      nights: moment(this.to).diff(this.from, 'days') ? moment(this.to).diff(this.from, 'days') : 0
     };
-  }
-  showFromMonth() {
-    const { from, to } = this.state;
-    if (!from) {
-      return;
-    }
-    if (moment(to).diff(moment(from), 'months') < 2) {
-      this.to.getDayPicker().showMonth(from);
-    }
   }
   handleFromChange(from) {
     // Change the from date and focus the "to" input field
     this.setState({ from });
+    if(this.state.to && moment(this.state.from).isBefore(from)){
+      this.props.dispatch({ type: 'TOTAL', nights: moment(this.state.to).diff(from, 'days') });
+    }
   }
   handleToChange(to) {
-    this.setState({ to }, this.showFromMonth);
+    this.setState({ to });
+    if(this.state.from && moment(this.state.from).isBefore(to)){
+      this.props.dispatch({ type: 'TOTAL', nights: moment(to).diff(this.state.from, 'days') });
+    }
   }
 
   render() {
@@ -79,3 +78,12 @@ export default class Cal extends React.Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    nights: state.nights,
+    from: state.from,
+    to: state.to
+  };
+}
+
+export default connect(mapStateToProps)(Cal);

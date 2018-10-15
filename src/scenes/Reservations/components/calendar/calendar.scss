@@ -15,17 +15,22 @@ $white: #FFFFFF;
   flex-direction: column;
   margin: 25px 25px 0 25px;
   .wrapper{
-    
+
     input{
       border: none;
       padding: none;
       max-width: 160px;
     }
-    div.DayPickerInput-Overlay{
-      margin-top: 30px;
-    }
     .DayPickerInput , .InputFromTo-to {
       max-width: 150px;
+      .DayPickerInput-OverlayWrapper{
+        right: 130px;
+        width: 454px;
+        div.DayPickerInput-Overlay{
+          margin-top: 30px;
+          right: 130px;
+        }
+      }
     }
     .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
       background-color: #f0f8ff !important;
@@ -65,7 +70,7 @@ $white: #FFFFFF;
         right: 20px;
       }
     }
-    
-    
+
+
   }
-} 
+}

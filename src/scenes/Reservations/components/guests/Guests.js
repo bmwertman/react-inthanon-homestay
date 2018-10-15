@@ -8,11 +8,11 @@ class Guests extends React.Component {
       <ul className="guest-list">
         {['adult', 'child', 'infant'].map((prop) => (
             this.props[prop].count > 1 && prop !== 'child' ?
-              <li className="list-item">{`  ${this.props[prop].count}-${prop.charAt(0).toUpperCase()}${prop.slice(1)}s`}</li>
+              <li className="list-item" key={prop}>{`  ${this.props[prop].count}-${prop.charAt(0).toUpperCase()}${prop.slice(1)}s`}</li>
             : this.props[prop].count > 1 && prop === 'child' ?
-              <li className="list-item">{`  ${this.props[prop].count}-Children`}</li>
+              <li className="list-item" key="child">{`  ${this.props[prop].count}-Children`}</li>
             : this.props[prop].count > 0 ?
-              <li className="list-item">{`  ${this.props[prop].count}-${prop.charAt(0).toUpperCase()}${prop.slice(1)}`}</li>
+              <li className="list-item" key={prop}>{`  ${this.props[prop].count}-${prop.charAt(0).toUpperCase()}${prop.slice(1)}`}</li>
             :
               null
         ))}
