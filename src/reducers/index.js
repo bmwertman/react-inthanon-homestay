@@ -2,6 +2,7 @@ const initialState = {
     adult: { count: 1 },
     child: { count: 0 },
     infant: { count: 0 },
+    room: { count: 1 },
     total: 0,
     nightlyRate: 30.99
 };

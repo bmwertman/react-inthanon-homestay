@@ -13,7 +13,7 @@ class Counter extends React.Component {
   }
 
   decrement = () => {
-    if(this.props.id === 'adult' && this.props.adult.count > 1){
+    if((this.props.id === 'adult' && this.props.adult.count > 1) || (this.props.id === 'room' && this.props.room.count > 1)){
       this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
     } else if ((this.props.id === 'child' && this.props.child.count > 0) || (this.props.id === 'infant' && this.props.infant.count > 0 )) {
       this.props.dispatch({ type: 'DECREMENT',  payload: this.props.id });
@@ -37,7 +37,8 @@ function mapStateToProps(state) {
   return {
     adult: { count: state.adult.count },
     child: { count: state.child.count },
-    infant: { count: state.infant.count }
+    infant: { count: state.infant.count },
+    room: { count: state.room.count }
   };
 }
 
