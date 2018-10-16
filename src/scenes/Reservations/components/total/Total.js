@@ -4,15 +4,19 @@ import './total.scss';
 
 class Total extends React.Component {
   render () {
-    return (
-      <input
+    if(this.props.total > 0){
+      return (
+        <input
         min="1"
         step="any"
         className="total"
         value={`Total - $${this.props.total.toFixed(2)}`}
         readOnly
         />
-    )
+      )
+    } else {
+      return null;
+    }
   }
 }
 

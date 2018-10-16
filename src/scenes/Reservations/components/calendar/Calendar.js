@@ -11,8 +11,8 @@ class Cal extends React.Component {
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
     this.state = {
-      from: null,
-      to: null
+      from: undefined,
+      to: undefined
     };
   }
   handleFromChange(from) {
