@@ -16,12 +16,15 @@
   "license": "ISC",
   "babel": {
     "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
-      }
-    }]
-  ]
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.3",

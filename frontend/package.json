@@ -61,7 +61,7 @@
     "build": "webpack",
     "watch": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --inline --hot"
   },
-  "proxy":"http://localhost:4200",
+  "proxy": "http://localhost:4200",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
