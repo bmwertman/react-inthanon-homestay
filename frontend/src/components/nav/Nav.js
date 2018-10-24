@@ -3,17 +3,17 @@ import Btn from './Btn';
 import './nav.scss';
 
 class Nav extends Component {
- 
+
   constructor(props) {
     super(props);
     this.state = {
-      navButtons: ['Home', 'About', 'Reservations', 'Activities', 'Contact']
+      navButtons: ['Home', 'About', 'Reservations', 'Activities', 'Contact', 'Admin']
     }
   }
 
   renderNavBtn (name) {
     let navBtns = this.state.navButtons.filter(function(name){
-        return "/" + name.toLowerCase() !== window.location.pathname; 
+        return "/" + name.toLowerCase() !== window.location.pathname;
     })
     return (
       navBtns.map(function(name, i){

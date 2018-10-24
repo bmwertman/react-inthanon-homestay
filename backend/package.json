@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./",
     "test": "jest -i --verbose --coverage --runInBand",
-    "start": "babel-node src/lib/server.js --presets es2015,stage-2",
+    "start": "babel-node src/server/server.js --presets es2015,stage-2",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db"
@@ -14,6 +14,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "babel": {
+    "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ]
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
@@ -25,8 +34,11 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
     "eslint": "^5.7.0",
     "jest": "^23.6.0"
   }

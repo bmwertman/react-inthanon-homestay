@@ -6,9 +6,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./config/paths.js');
 
 module.exports = {
-  entry: "./src/index.js",
   mode: "development",
-
   resolve: { extensions: ["*", ".js", ".jsx"] },
   module: {
     strictExportPresence: true,
@@ -118,6 +116,7 @@ module.exports = {
       // Make sure to add the new loader(s) before the "file" loader.
     ],
   },
+  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
@@ -129,5 +128,7 @@ module.exports = {
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

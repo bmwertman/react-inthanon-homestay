@@ -4,10 +4,12 @@ import Payment from 'payment';
 import { connect } from "react-redux";
 import { Button } from 'antd';
 import Total from '../total/Total.js';
+import axios from 'axios';
 import 'react-credit-cards/lib/styles.scss';
 import './cards.scss';
 
 class ReactCreditCard extends React.Component {
+
   constructor() {
       super();
       this.state = {
@@ -17,6 +19,9 @@ class ReactCreditCard extends React.Component {
         cvc: '',
         focused: ''
       };
+      this.onSubmit = this.onSubmit.bind(this)
+      this.handleInputFocus = this.handleInputFocus.bind(this)
+      this.handleInputChange = this.handleInputChange.bind(this)
   };
 
   componentDidMount() {
@@ -36,12 +41,12 @@ class ReactCreditCard extends React.Component {
   handleInputChange = ({ target }) => {
     if (target.name === 'number') {
       this.setState({
-        [target.name]: target.value.replace(/ /g, ''),
+        [target.name]: parseInt(target.value.replace(/ /g, ''), 16),
       });
     }
     else if (target.name === 'expiry') {
       this.setState({
-        [target.name]: target.value.replace(/ |\//g, ''),
+        [target.name]: parseInt(target.value.replace(/ |\//g, ''), 16),
       });
     }
     else {
@@ -50,6 +55,47 @@ class ReactCreditCard extends React.Component {
       });
     }
   };
+
+  onSubmit(e){
+    e.preventDefault();
+    const bookingRequest = {
+      name: this.state.name,
+      number: this.state.number,
+      expiry: this.state.expiry,
+      cvc: this.state.cvc
+    }
+    axios('http://localhost:4200/bookingrequest/add', {
+     method: 'post',
+     data: bookingRequest,
+     withCredentials: false
+    })
+    .then(res => console.log(res.data))
+    .catch(err => {
+      if(err.response){
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(err.response.data)
+        console.log(err.response.status)
+        console.log(err.response.headers)
+      } else if (err.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(err.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', err.message);
+      }
+      console.log(err.config);
+    })
+
+    this.setState({
+      name: '',
+      number: '',
+      expiry: '',
+      cvc: ''
+    })
+  }
 
   render() {
     const { name, number, expiry, cvc, focused } = this.state;
@@ -94,7 +140,7 @@ class ReactCreditCard extends React.Component {
                   />
                 </div>
               </section>
-              <Button type="primary">Request to Book</Button>
+              <Button type="primary" onClick={this.onSubmit}>Request to Book</Button>
             </form>
             <Cards
               number={number}
