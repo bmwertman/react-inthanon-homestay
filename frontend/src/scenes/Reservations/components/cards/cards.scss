@@ -10,7 +10,7 @@ $ltBlue: #41708C;
 $medLtBlue: #265977;
 $white: #FFFFFF;
 
-form {
+.payment {
   display: flex;
   flex-direction: column;
   margin: 15px 25px 0 25px;
@@ -51,12 +51,6 @@ form {
     &:focus {
       border-color: #666;
     }
-  }
-  button.ant-btn-primary {
-    background-color: $ltBlue;
-    border-color: $medLtBlue;
-    width: 165px;
-    margin: 20px 0;
   }
 }
 

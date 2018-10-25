@@ -6,8 +6,8 @@ import './calendar.scss';
 import moment from 'moment';
 import {formatDate, parseDate} from 'react-day-picker/moment';
 class Cal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
     this.state = {
@@ -15,31 +15,30 @@ class Cal extends React.Component {
       to: undefined
     };
   }
-  handleFromChange(from) {
-    // Change the from date and focus the "to" input field
-    this.setState({ from });
-    if(this.state.to && moment(this.state.from).isBefore(from)){
+  handleFromChange(from, modifiers, dayPickerInput) {
+    this.setState({ from: from }, () => {
+      this.props.onDateChange({from: from});
       this.props.dispatch({
         type: 'TOTAL',
         nights: moment(this.state.to).diff(from, 'days')
       });
-    }
+    });
   }
   handleToChange(to) {
-    this.setState({ to });
-    if(this.state.from && moment(this.state.from).isBefore(to)){
+    this.setState({ to: to }, () => {
+      this.props.onDateChange({to: to});
       this.props.dispatch({
         type: 'TOTAL',
         nights: moment(to).diff(this.state.from, 'days')
       });
-    }
+    });
   }
 
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
-      <div className="InputFromTo">
+      <div className="InputFromTo" >
         <label htmlFor="wrapper">Dates</label>
         <div className="wrapper">
           <DayPickerInput

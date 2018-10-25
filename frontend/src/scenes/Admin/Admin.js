@@ -35,9 +35,12 @@ export default class Admin extends React.Component {
           <thead>
             <tr>
               <td>Name</td>
-              <td>Number</td>
-              <td>Expiry</td>
-              <td>CVC</td>
+              <td>Checkin</td>
+              <td>Checkout</td>
+              <td>Rooms</td>
+              <td>Adults</td>
+              <td>Children</td>
+              <td>Infants</td>
             </tr>
           </thead>
           <tbody>

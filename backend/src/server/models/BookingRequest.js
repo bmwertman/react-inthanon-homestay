@@ -5,14 +5,23 @@ const BookingRequest = new Schema({
   name: {
     type: String
   },
-  number: {
+  from: {
     type: String
   },
-  expiry: {
+  to: {
     type: String
   },
-  cvc: {
-    type: String
+  room: {
+    type: Number
+  },
+  adult: {
+    type: Number
+  },
+  child: {
+    type: Number
+  },
+  infant: {
+    type: Number
   }
 }, { collection: 'bookingrequest' })
 

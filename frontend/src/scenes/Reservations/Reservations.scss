@@ -25,4 +25,32 @@ $white: #FFFFFF;
     border-radius: 6px;
     box-shadow: none;
   }
+  .requester-label{
+    display:block;
+    margin: 25px;
+    .requester-details{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+  }
+  }
+  .age{
+    display: table;
+    .age-group{
+      display: table-cell;
+      vertical-align: middle;
+      width: 55%;
+      font-weight: bold;
+    }
+    .age-group-label{
+      font-weight: normal;
+    }
+  }
+  button.ant-btn-primary {
+    display: block;
+    margin: 10px auto;
+    background-color: $ltBlue;
+    border-color: $medLtBlue;
+    width: 165px;
+  }
 }
