@@ -12,8 +12,8 @@ export default class Reservations extends React.Component {
     this.state = {
       name: '',
       email: '',
-      from: null,
-      to: null,
+      from: undefined,
+      to: undefined,
       room: 1,
       adult: 1,
       child: 0,
@@ -27,13 +27,13 @@ export default class Reservations extends React.Component {
   }
 
   onSubmit (e) {
-    e.preventDefault();
+    e.preventDefault()
     axios('http://localhost:4200/bookingrequest/add', {
      method: 'post',
      data: this.state,
      withCredentials: false
     })
-    .then(res => console.log(res.data))
+    .then(res => { console.log(res.data) })
     .catch(err => {
       if(err.response){
         // The request was made and the server responded with a status code
@@ -51,16 +51,6 @@ export default class Reservations extends React.Component {
         console.log('Error', err.message);
       }
       console.log(err.config);
-    })
-    this.setState({
-      name: '',
-      email: '',
-      from: null,
-      to: null,
-      room: 1,
-      adult: 1,
-      child: 0,
-      infant: 0
     })
   }
 
@@ -124,6 +114,6 @@ export default class Reservations extends React.Component {
           <Button type="primary" onClick={this.onSubmit}>Request to Book</Button>
         </form>
       </aside>
-    );
+    )
   }
 }

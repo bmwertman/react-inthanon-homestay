@@ -25,4 +25,18 @@ BookingRequestRouter
       }
     })
   })
+
+BookingRequestRouter
+  .route('/decline').delete(function (req, res) {
+    BookingRequest.deleteOne({
+      'id': req.params.id
+    }, function (err, bookingrequest) {
+      if (err) {
+        res.send(`Error: ${err} .Unable to delete booking request`)
+      } else {
+        res.json({ message: 'Booking request deleted.' })
+      }
+    })
+  })
+
 module.exports = BookingRequestRouter
