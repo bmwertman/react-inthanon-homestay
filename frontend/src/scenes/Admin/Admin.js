@@ -6,7 +6,7 @@ export default class Admin extends React.Component {
   render () {
     return (
       <div className="admin">
-        <h2 className="admin-heading">Reservation Requests</h2>
+        <h2>Reservation Requests</h2>
         <Requests />
       </div>
     );
