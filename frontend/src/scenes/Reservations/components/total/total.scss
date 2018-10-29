@@ -1,15 +1,4 @@
-$inthanonGreen : #116A3E;
-$dkGreen : #003218;
-$medDkGreen: #014F27;
-$ltGreen: #439A6E;
-$medLtGreen: #258353;
-$blue: #144460;
-$dkBlue : #021D2D;
-$medDkBlue: #052F48;
-$ltBlue: #41708C;
-$medLtBlue: #265977;
-$white: #FFFFFF;
-
+@import '../../../../styles/colors.scss';
 .total {
   border: 1px solid $ltGreen;
   border-radius: 6px;

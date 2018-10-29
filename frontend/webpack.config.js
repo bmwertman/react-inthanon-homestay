@@ -2,7 +2,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const paths = require('./config/paths.js');
 
 module.exports = {
@@ -126,7 +125,10 @@ module.exports = {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
-    hotOnly: true
+    hot: true,
+    historyApiFallback: true,
+    watchContentBase: true,
+    inline: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
