@@ -2,36 +2,45 @@
 body {
   background-color: $ltBlue;
   .admin{
-  background-color: $ltBlue;
+    background-color: $ltBlue;
 
-  h2{
-	  -moz-text-fill-color: black;
-    -webkit-text-fill-color: black;
-    -moz-text-stroke-color: $medLtBlue;
-    -webkit-text-stroke-color: $medLtBlue;
-    -moz-text-stroke-width: 1px;
-    -webkit-text-stroke-width: 1px;
-    text-align: center;
-    margin: 0;
-  }
-  table{
-    margin: 20px auto;
-    border: 3px solid $ltGreen;
-    td {
-      border: 1px solid lightgrey;
-      padding: 5px;
-      img.count{
-        margin: 2px;
-        width: 25px;
-      }
-    }
-    thead{
-      border-bottom: 2px solid $ltGreen;
+    h2{
+  	  -moz-text-fill-color: black;
+      -webkit-text-fill-color: black;
+      -moz-text-stroke-color: $medLtBlue;
+      -webkit-text-stroke-color: $medLtBlue;
+      -moz-text-stroke-width: 1px;
+      -webkit-text-stroke-width: 1px;
       text-align: center;
+      margin: 20px 0 0 0 ;
+    }
+    .noData{
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
       font-weight: bold;
     }
-    background-color: $white;
-    margin-top: 0;
+    table{
+      margin: 0 auto 20px;
+      border: 3px solid $ltGreen;
+      td {
+        border: 1px solid lightgrey;
+        padding: 5px;
+        .preventCollapse{
+          min-height: 25px;
+        }
+        img.count{
+          margin: 2px;
+          width: 25px;
+        }
+      }
+      thead{
+        border-bottom: 2px solid $ltGreen;
+        text-align: center;
+        font-weight: bold;
+      }
+      background-color: $white;
+    }
   }
-}
 }

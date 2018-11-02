@@ -4,14 +4,13 @@ const BookingRequestRouter = express.Router()
 
 BookingRequestRouter
   .route('/add').post(function (req, res) {
-    console.log('The Add route got hit')
     const bookingrequest = new BookingRequest(req.body)
     bookingrequest.save()
       .then(bookingrequest => {
-        res.json('Request to book successfully submitted')
+        res.send(bookingrequest)
       })
       .catch(err => {
-        res.status(400).send(`Error: ${err} .Unable to save to database`)
+        res.status(400).send(`Error: ${err}. Unable to save to database.`)
       })
   })
 
@@ -30,13 +29,28 @@ BookingRequestRouter
   .route('/decline').delete(function (req, res) {
     BookingRequest.deleteOne({
       'id': req.params.id
-    }, function (err, bookingrequest) {
+    },
+    function (err, bookingrequest) {
       if (err) {
-        res.send(`Error: ${err} .Unable to delete booking request`)
+        res.send(`${err}. Unable to delete booking request.`)
       } else {
         res.json({ message: 'Booking request deleted.' })
       }
     })
+  })
+
+BookingRequestRouter
+  .route('/accept').get(function (req, res) {
+    BookingRequest.findOneAndUpdate(
+      { _id: req.query.id },
+      { state: 'accepted' },
+      { new: true }, function (err, acceptedRequest) {
+        if (err) {
+          res.send(err)
+        } else {
+          res.json(acceptedRequest)
+        }
+      })
   })
 
 module.exports = BookingRequestRouter

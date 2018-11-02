@@ -22,6 +22,9 @@ const BookingRequest = new Schema({
   },
   infant: {
     type: Number
+  },
+  state: {
+    type: String
   }
 }, { collection: 'bookingrequest' })
 
