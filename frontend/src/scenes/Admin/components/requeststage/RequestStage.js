@@ -55,7 +55,7 @@ export default class RequestStage extends Component {
                     <td>{[...Array(obj.child)].map((e, i) => {return <img className="count" key={i} alt='child' src={child} />})}</td>
                     <td>{[...Array(obj.infant)].map((e, i) => {return <img className="count" key={i} alt='infant' src={infant} />})}</td>
                     <td>
-                      { this.props.stage === 'new' &&
+                      { obj.stage === 'new' &&
                         <div>
                           <Button onClick={() => this.declineBooking(obj)} shape="circle" icon="close-circle" />
                           <Button onClick={() => this.props.acceptBooking(obj)} shape="circle" icon="check-circle" />
