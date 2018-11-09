@@ -18,7 +18,7 @@ export default class Reservations extends React.Component {
       adult: 1,
       child: 0,
       infant: 0,
-      state: 'newRequest'
+      stage: 'newRequest'
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.handleCountChange = this.handleCountChange.bind(this)

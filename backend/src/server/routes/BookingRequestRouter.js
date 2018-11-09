@@ -28,7 +28,7 @@ BookingRequestRouter
 BookingRequestRouter
   .route('/decline').delete(function (req, res) {
     BookingRequest.deleteOne({
-      'id': req.params.id
+      '_id': req.query.id
     },
     function (err, bookingrequest) {
       if (err) {
@@ -43,7 +43,7 @@ BookingRequestRouter
   .route('/accept').get(function (req, res) {
     BookingRequest.findOneAndUpdate(
       { _id: req.query.id },
-      { state: 'accepted' },
+      { stage: 'accepted' },
       { new: true }, function (err, acceptedRequest) {
         if (err) {
           res.send(err)
